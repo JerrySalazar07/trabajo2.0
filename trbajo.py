@@ -6,8 +6,8 @@ from tkinter import ttk, messagebox
 window = Tk()
 window.geometry("600x500")
 #La imagen es de prueba (para ver como quedaría en la interfaz)
-#imagen = PhotoImage(file="javelinfinal.pgm")
-#fondo = Label(window, image=imagen).place(x=250, y=0)
+imagen = PhotoImage(file="javelinfinal.pgm")
+fondo = Label(window, image=imagen).place(x=250, y=0)
 titulo = Label(window, text="Datos del Deportista",font=("Arial",20)).place(x=230,y=100)
 nombre = Label(window, text="Nombres",font=("Arial",10,),background="grey").place(x=230,y=150)
 apellidos = Label(window, text="Apellidos",font=("Arial",10,),background="grey").place(x=230, y=180)
@@ -72,7 +72,7 @@ def bLogin():
     print(apellidos)"""
 def vResultado():
     window2 = Toplevel(window)
-    window2.geometry("350x250")
+    window2.geometry("500x350")
     sumaP=0
     sumaB=0
     sumaA=0
@@ -88,9 +88,16 @@ def vResultado():
         sumaA = sumaA+argentina[i]
     for i in range(3):
         sumaU = sumaU+ uruguay[i]
-    Label(window2, text=sumaP).place(x=1,y=1) 
-    Button(window2, text="Cerrar",background="red",command=window2.destroy).place(x=20,y=20)
-login = Button(window, text="  Ingresar  ", background="red",command = bLogin).place(x=210, y=300)
-resultado = Button(window, text="Resultado", background="red",command=vResultado).place(x=305,y=350)
-quit = Button(window, text="     Salir     ", background="red", command = window.destroy).place(x=400, y=300)
+    Label(window2, text="Posición").place(x=0,y=0)
+    Label(window2, text="País").place(x=80,y=0)
+    Label(window2, text="  ",background="brown").place(x=180,y=0)
+    Label(window2, text="  ",background="silver").place(x=200,y=0)
+    Label(window2, text="  ",background="gold").place(x=220,y=0)
+    Label(window2,text="Total").place(x=300,y=0)
+    Button(window2, text="Cerrar",background="red",command=window2.destroy).place(x=200,y=300)
+Button(window, text="  Ingresar  ", background="red",command = bLogin).place(x=210, y=300)
+Button(window, text="Resultado", background="red",command=vResultado).place(x=305,y=350)
+Button(window, text="     Salir     ", background="red", command = window.destroy).place(x=400, y=300)
+
+#asd
 window.mainloop()
