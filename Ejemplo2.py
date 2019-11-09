@@ -8,8 +8,8 @@ window.geometry("300x350")
 aEntrada = tk.StringVar()
 nEntrada = tk.StringVar()
 var = tk.StringVar()
-imagen = PhotoImage(file="pana.pgm")
-fondo = Label(window, image=imagen).place(x=20,y=0)
+#imagen = PhotoImage(file="pana.pgm")
+#fondo = Label(window, image=imagen).place(x=20,y=0)
 titulo = Label(window, text="Países participantes", width=15,font=("Arial",20,"bold")).place(x=20,y=140)
 Pas = Label(window, text="Ingrese cantidad de Países participantes: ",font=("Arial",10, "bold")).place(x=20, y=170)
 nPaises = IntVar()
@@ -34,8 +34,9 @@ def pRegistro():
         messagebox.showinfo("Error","El número de participante debe ser mayor o igual a 10")
 var.set("Elegir País")
 opciones = []  
-opcion=nomPais.get()
+
 def RegistrarPais():
+    opcion=nomPais.get()
     opciones.append(opcion)   
     print(opciones) 
 def vRegistro():
@@ -132,5 +133,7 @@ def vResultado():
     Label(window3,text="Total").place(x=300,y=0)
     Button(window3, text="Cerrar",background="red",command=window3.destroy).place(x=200,y=300)
     window3.mainloop()
-   
+  
+
+
 window.mainloop()
