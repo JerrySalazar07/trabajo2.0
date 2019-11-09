@@ -113,3 +113,4 @@ def vResultado():
     Button(window3, text="Cerrar",background="red",command=window3.destroy).place(x=200,y=300)
     window3.mainloop()
 window.mainloop()
+#Asdsad
