@@ -15,7 +15,7 @@ nPaises = IntVar()
 Pais = Entry(window,textvariable=nPaises).place(x=80, y=190)
 nomPais= tk.StringVar()
 def pRegistro():
-    if nPaises.get()>=10:
+    if nPaises.get()>=1:
        window4 = Toplevel(window)
        window4.geometry("400x300")
        Label(window4, text="Registro").place(x=50,y=0)
@@ -54,9 +54,8 @@ Button(window, text="Aceptar",bg="red", command=pRegistro, width=10).place(x=100
 Button(window, text="Salir",bg="red",command=window.destroy,width=10).place(x=100,y=250)
 nombres = []
 apellidos = []
+oPais = var.get()
 #No se me ocurre otra manera de almacenar
-for i in range(nPaises.get()):
-    opciones[i]=[]
 def bLogin():
     nMayor=10
     nombre = nEntrada.get()
@@ -68,7 +67,18 @@ def bLogin():
        oro = r(1,5)
        nombres.append(nombre)
        apellidos.append(apellido)
-       if var.get()=="Peru" or var.get()=="peru":
+    #  df 
+    #if ():   
+       for i in range(nPaises.get()):
+           oPais = [0]*3
+    #else :
+    # Una lógica necesaria para que no se repita el proceso de la línea 72      
+       for j in range(1):
+           oPais[0]+=bronce
+           oPais[1]+=plata
+           oPais[2]+=oro
+        #Nos ahorramos todo esto   
+        """if var.get()=="Peru" or var.get()=="peru":
         Peru[0]+=bronce
         Peru[1]+=plata
         peru[2]+=oro
@@ -87,28 +97,28 @@ def bLogin():
        elif var.get()=="Uruguay" or var.get()=="uruguay":
         Uruguay[0]+=bronce
         Uruguay[1]+=plata
-        Uruguay[2]+=oro
+        Uruguay[2]+=oro"""       
     else:
         messagebox.showinfo("Error","Ingrese sus datos")
+    print(oPais)    
 def vResultado():
     window3 = Toplevel()
     window3.geometry("500x350")
-    sumaP=0
-    sumaB=0
-    sumaA=0
-    sumaU=0
-    sumaC=0
-    c=0
+    suma=0
     for i in range(3):
-        sumaP = sumaP+peru[i]
+        suma = suma + oPais[i]
+    print(suma)    
+    """
     for i in range(3):
-        sumaB = sumaB+brasil[i]
+        sumaP = sumaP+Peru[i]
     for i in range(3):
-        sumaC = sumaC + chile[i]
+        sumaB = sumaB+Brasil[i]
     for i in range(3):
-        sumaA = sumaA+argentina[i]
+        sumaC = sumaC +Chile[i]
     for i in range(3):
-        sumaU = sumaU+ uruguay[i]
+        sumaA = sumaA+Argentina[i]
+    for i in range(3):
+        sumaU = sumaU+ Uruguay[i]"""
     for i in range(nPaises.get()):
         c=c+30
         Label(window3, text=i+1).place(x=0, y=c)
