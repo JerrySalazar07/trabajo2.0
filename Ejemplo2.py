@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import *
 from random import randint as r
 from tkinter import ttk, messagebox
-#La vista de la interfaz no me convence mucho, sería cosa de modificarlo para que quede mejor
 window = Tk()
 window.geometry("300x350")
 aEntrada = tk.StringVar()
@@ -17,28 +16,22 @@ Pais = Entry(window,textvariable=nPaises).place(x=80, y=190)
 nomPais= tk.StringVar()
 def pRegistro():
     if nPaises.get()>=10:
-       c=0
        window4 = Toplevel(window)
        window4.geometry("400x300")
        Label(window4, text="Registro").place(x=50,y=0)
        
        Entry(window4,textvariable=nomPais, width=20).place(x=50,y=50)
        Button(window4,text="Ingresar", command=RegistrarPais).place(x=70,y=70)
-       #Button(window4,text="Continuar", command=vRegistro).place(x=70,100)
-       
-       if c<=nPaises.get():
-           c+=1
-       else:    
-           messagebox.showinfo("Completo","Número de países completos")
+       Button(window4,text="Continuar", command=vRegistro).place(x=70,y=100)
     else:
         messagebox.showinfo("Error","El número de participante debe ser mayor o igual a 10")
 var.set("Elegir País")
 opciones = []  
-
+c=0
 def RegistrarPais():
-    opcion=nomPais.get()
-    opciones.append(opcion)   
-    print(opciones) 
+      opcion=nomPais.get()
+      opciones.append(opcion)   
+      print(opciones)
 def vRegistro():
        window2 = Toplevel()
        # La imagen es de prueba (para ver como quedaría en la interfaz
@@ -62,12 +55,8 @@ Button(window, text="Salir",bg="red",command=window.destroy,width=10).place(x=10
 nombres = []
 apellidos = []
 #No se me ocurre otra manera de almacenar
-peru = [0] * 3
-brasil = [0] * 3
-chile = [0] * 3
-argentina = [0] * 3
-uruguay = [0] * 3
-EEUU = [0]*3
+for i in range(nPaises.get()):
+    opciones[i]=[]
 def bLogin():
     nMayor=10
     nombre = nEntrada.get()
@@ -79,26 +68,26 @@ def bLogin():
        oro = r(1,5)
        nombres.append(nombre)
        apellidos.append(apellido)
-       if var.get()=="Perú":
-        peru[0]+=bronce
-        peru[1]+=plata
+       if var.get()=="Peru" or var.get()=="peru":
+        Peru[0]+=bronce
+        Peru[1]+=plata
         peru[2]+=oro
-       elif var.get()=="Brasil":
-        brasil[0]+=bronce
-        brasil[1]+=plata
-        brasil[2]+=oro
-       elif var.get()=="Chile":
-        chile[0]+=bronce
-        chile[1]+=plata
-        chile[2]+=oro
-       elif var.get()=="Argentina":
-        argentina[0]+=bronce
-        argentina[1]+=plata
-        argentina[2]+=oro
-       elif var.get()=="Uruguay":
-        uruguay[0]+=bronce
-        uruguay[1]+=plata
-        uruguay[2]+=oro
+       elif var.get()=="Brasil" or var.get()=="brasil":
+        Brasil[0]+=bronce
+        Brasil[1]+=plata
+        Brasil[2]+=oro
+       elif var.get()=="Chile" or var.get()=="chile":
+        Chile[0]+=bronce
+        Chile[1]+=plata
+        Chile[2]+=oro
+       elif var.get()=="Argentina" or var.get()=="argentina":
+        Argentina[0]+=bronce
+        Argentina[1]+=plata
+        Argentina[2]+=oro
+       elif var.get()=="Uruguay" or var.get()=="uruguay":
+        Uruguay[0]+=bronce
+        Uruguay[1]+=plata
+        Uruguay[2]+=oro
     else:
         messagebox.showinfo("Error","Ingrese sus datos")
 def vResultado():
