@@ -122,7 +122,5 @@ def vResultado():
     Label(window3,text="Total").place(x=300,y=0)
     Button(window3, text="Cerrar",background="red",command=window3.destroy).place(x=200,y=300)
     window3.mainloop()
-  
-
-
+#as
 window.mainloop()
