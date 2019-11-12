@@ -2,6 +2,9 @@ import tkinter as tk
 from tkinter import *
 from random import randint as r
 from tkinter import ttk, messagebox
+#Falta una lógica para que el programa rechace pasar a la ventana de registro si es que no se han 
+#puesto los países solicitados anteriormente, como también si te excedes te mande un ventana de mensaje
+#
 window = Tk()
 window.geometry("300x350")
 aEntrada = tk.StringVar()
@@ -27,14 +30,22 @@ def pRegistro():
         messagebox.showinfo("Error","El número de participante debe ser mayor o igual a 10")
 var.set("Elegir País")
 opciones = []  
-c=0
+
 def RegistrarPais():
+    if len(opciones)<=nPaises.get():    
       opcion=nomPais.get()
       opciones.append(opcion)   
       print(opciones)
+    else:
+      opciones.pop()  
+      messagebox.showinfo("Error","No puede ingresar más países")  
+       
 def vRegistro():
+    c=0
+    for i in opciones:
+        c=c+1
+    if c==nPaises.get():
        window2 = Toplevel()
-       # La imagen es de prueba (para ver como quedaría en la interfaz
        #imagen = PhotoImage(file="javelinfinal.pgm")
        #fondo = Label(window2, image=imagen).place(x=0, y=0)
        titulo = Label(window2, text="Datos del Deportista",font=("Arial",20,"bold")).place(x=100,y=100)
@@ -47,26 +58,24 @@ def vRegistro():
        opcion = tk.OptionMenu(window2 ,var,*opciones).place(x=170, y=210)
        login = Button(window2, text="  Ingresar  ", background="red", command=bLogin).place(x=150, y=300)
        resultado = Button(window2, text="Resultado", background="red", command=vResultado).place(x=200, y=350)
-       quit = Button(window2, text="     Salir     ", background="red", command=window.destroy).place(x=250, y=300)
-       window2.mainloop()
+       quit = Button(window2, text="     Salir     ", background="red", command=window2.destroy).place(x=250, y=300)
+       window2.mainloop() 
+    else:
+       messagebox.showinfo("Error","Ingresar más países")    
     
 Button(window, text="Aceptar",bg="red", command=pRegistro, width=10).place(x=100,y=220)
 Button(window, text="Salir",bg="red",command=window.destroy,width=10).place(x=100,y=250)
-nombres = []
-apellidos = []
+nombreC = []
 oPais = var.get()
-#No se me ocurre otra manera de almacenar
 def bLogin():
     nMayor=10
-    nombre = nEntrada.get()
-    apellido = aEntrada.get()
+    nombre = nEntrada.get()+" "+aEntrada.get()
     if nEntrada.get() != "" or aEntrada.get() != "":
-       messagebox.showinfo("Registro con exito","Bienvenido "+nombre+" "+apellido)
+       messagebox.showinfo("Registro con exito","Bienvenido "+nombre)
        bronce = r(1,5)
        plata = r(1,5)
        oro = r(1,5)
-       nombres.append(nombre)
-       apellidos.append(apellido)
+       nombreC.append(nombre)
     #  df 
     #if ():   
        for i in range(nPaises.get()):
@@ -77,27 +86,7 @@ def bLogin():
            oPais[0]+=bronce
            oPais[1]+=plata
            oPais[2]+=oro
-        #Nos ahorramos todo esto   
-        """if var.get()=="Peru" or var.get()=="peru":
-        Peru[0]+=bronce
-        Peru[1]+=plata
-        peru[2]+=oro
-       elif var.get()=="Brasil" or var.get()=="brasil":
-        Brasil[0]+=bronce
-        Brasil[1]+=plata
-        Brasil[2]+=oro
-       elif var.get()=="Chile" or var.get()=="chile":
-        Chile[0]+=bronce
-        Chile[1]+=plata
-        Chile[2]+=oro
-       elif var.get()=="Argentina" or var.get()=="argentina":
-        Argentina[0]+=bronce
-        Argentina[1]+=plata
-        Argentina[2]+=oro
-       elif var.get()=="Uruguay" or var.get()=="uruguay":
-        Uruguay[0]+=bronce
-        Uruguay[1]+=plata
-        Uruguay[2]+=oro"""       
+    #Nos ahorramos todo esto    
     else:
         messagebox.showinfo("Error","Ingrese sus datos")
     print(oPais)    
@@ -105,9 +94,12 @@ def vResultado():
     window3 = Toplevel()
     window3.geometry("500x350")
     suma=0
-    for i in range(3):
-        suma = suma + oPais[i]
-    print(suma)    
+    sumaP = []
+    c=0
+    #for i in range(3):
+    #    suma = suma + oPais[i]
+    #    sumaP.append(suma)
+    #print(suma)    
     """
     for i in range(3):
         sumaP = sumaP+Peru[i]
