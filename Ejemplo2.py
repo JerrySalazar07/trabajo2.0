@@ -2,9 +2,6 @@ import tkinter as tk
 from tkinter import *
 from random import randint as r
 from tkinter import ttk, messagebox
-#Falta una lógica para que el programa rechace pasar a la ventana de registro si es que no se han 
-#puesto los países solicitados anteriormente, como también si te excedes te mande un ventana de mensaje
-#
 window = Tk()
 window.geometry("300x350")
 aEntrada = tk.StringVar()
