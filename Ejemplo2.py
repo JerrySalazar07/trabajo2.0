@@ -65,20 +65,24 @@ Button(window, text="Salir",bg="red",command=window.destroy,width=10).place(x=10
 nombreC = []
 oPais = var.get()
 def bLogin():
+    c=0
     nMayor=10
     nombre = nEntrada.get()+" "+aEntrada.get()
     if nEntrada.get() != "" or aEntrada.get() != "":
        messagebox.showinfo("Registro con exito","Bienvenido "+nombre)
-       bronce = r(1,5)
-       plata = r(1,5)
-       oro = r(1,5)
+       bronce=0
+       if bronce<=0:
+          bronce = r(0,1)
+       elif plata<=0 and bronce!=1:
+          plata = r(0,1)
+       elif oro <=0 and plata!=1 and bronce!=1: 
+          oro = r(0,1)
        nombreC.append(nombre)
-    #  df 
-    #if ():   
+    if c==0:   
        for i in range(nPaises.get()):
            oPais = [0]*3
-    #else :
-    # Una lógica necesaria para que no se repita el proceso de la línea 72      
+           c=c+1
+    if c>=0:
        for j in range(1):
            oPais[0]+=bronce
            oPais[1]+=plata
@@ -93,6 +97,7 @@ def vResultado():
     suma=0
     sumaP = []
     c=0
+    a=0
     #for i in range(3):
     #    suma = suma + oPais[i]
     #    sumaP.append(suma)
@@ -108,6 +113,9 @@ def vResultado():
         sumaA = sumaA+Argentina[i]
     for i in range(3):
         sumaU = sumaU+ Uruguay[i]"""
+    for i in range(len(opciones)):
+        a=a+30
+        Label(window3, text=opciones[i]).place(x=60,y=a)    
     for i in range(nPaises.get()):
         c=c+30
         Label(window3, text=i+1).place(x=0, y=c)
@@ -115,11 +123,10 @@ def vResultado():
     #Peru = Label(window3, image=iPeru, text="Perú").place(x=100,y=150)
     Label(window3, text="Posición").place(x=0,y=0)
     Label(window3, text="País").place(x=80,y=0)
-    Label(window3, text="  ",background="brown").place(x=180,y=0)
-    Label(window3, text="  ",background="silver").place(x=200,y=0)
-    Label(window3, text="  ",background="gold").place(x=220,y=0)
+    Label(window3, text="   ",background="#CD7F32").place(x=180,y=0)
+    Label(window3, text="   ",background="silver").place(x=200,y=0)
+    Label(window3, text="   ",background="gold").place(x=220,y=0)
     Label(window3,text="Total").place(x=300,y=0)
     Button(window3, text="Cerrar",background="red",command=window3.destroy).place(x=200,y=300)
     window3.mainloop()
-#as
 window.mainloop()
