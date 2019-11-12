@@ -65,14 +65,34 @@ Button(window, text="Aceptar",bg="red", command=pRegistro, width=10).place(x=100
 Button(window, text="Salir",bg="red",command=window.destroy,width=10).place(x=100,y=250)
 nombreC = []
 oPais = var.get()
+n = nPaises.get()
 def bLogin():
     c=0
     nMayor=10
     nombre = nEntrada.get()+" "+aEntrada.get()
     mPaises=[]
+    nombreC.append(nombre) 
     for i in range(nPaises.get()):
-        mPaises.append([0]*3)
-
+        mPaises.append([0]*3)   
+       
+    for i in range(nPaises.get()):  
+        a = r(0,2) 
+        for j in range(3):
+             bronce=0
+             plata=0
+             oro=0
+             if a==0:
+                bronce = r(1,3)
+                mPaises[i][a]+=bronce
+                break
+             elif a==1:
+                plata = r(1,3)
+                mPaises[i][a]+=plata
+                break
+             elif a==2: 
+                oro = r(1,3)
+                mPaises[i][a]+=oro  
+                break
     print(mPaises)        
     #if c==0:   
     #     for i in range(nPaises.get()):
@@ -80,23 +100,9 @@ def bLogin():
     #       c=c+1
     if nEntrada.get() != "" or aEntrada.get() != "":
        messagebox.showinfo("Registro con exito","Bienvenido "+nombre)
-       bronce=0
-       plata=0
-       oro=0
-       a = r(0,2)
-       if a==0:
-          bronce = r(1,3)
-          mPaises[a]+=bronce
-       elif a==1:
-          plata = r(1,3)
-          mPaises[a]+=plata
-       elif a==2: 
-          oro = r(1,3)
-          mPaises[][a]+=oro
-       nombreC.append(nombre)   
+      
     else:
-        messagebox.showinfo("Error","Ingrese sus datos")
-    print(mPaises)    
+        messagebox.showinfo("Error","Ingrese sus datos")  
 def vResultado():
     window3 = Toplevel()
     window3.geometry("500x350")
@@ -104,9 +110,6 @@ def vResultado():
     sumaP = []
     c=0
     a=0
-    print(opciones[0])
-    print(opciones[1])
-    print(oPais)
     #for i in range(3):
     #    suma = suma + oPais[i]
     #    sumaP.append(suma)
