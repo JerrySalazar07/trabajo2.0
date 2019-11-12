@@ -32,13 +32,13 @@ var.set("Elegir País")
 opciones = []  
 
 def RegistrarPais():
-    if len(opciones)<=nPaises.get():    
+    if len(opciones)<=nPaises.get()-1:    
       opcion=nomPais.get()
       opciones.append(opcion)   
       print(opciones)
-    else:
-      opciones.pop()  
+    else:  
       messagebox.showinfo("Error","No puede ingresar más países")  
+      print(opciones)
        
 def vRegistro():
     c=0
