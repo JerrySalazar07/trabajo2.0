@@ -71,12 +71,14 @@ def bLogin():
     if nEntrada.get() != "" or aEntrada.get() != "":
        messagebox.showinfo("Registro con exito","Bienvenido "+nombre)
        bronce=0
+       plata=0
+       oro=0
        if bronce<=0:
-          bronce = r(0,1)
+          bronce = r(0,2)
        elif plata<=0 and bronce!=1:
-          plata = r(0,1)
+          plata = r(0,2)
        elif oro <=0 and plata!=1 and bronce!=1: 
-          oro = r(0,1)
+          oro = r(0,2)
        nombreC.append(nombre)
     if c==0:   
        for i in range(nPaises.get()):
