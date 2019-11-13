@@ -14,6 +14,8 @@ Pas = Label(window, text="Ingrese cantidad de Países participantes: ",font=("Ar
 nPaises = IntVar()
 Pais = Entry(window,textvariable=nPaises).place(x=80, y=190)
 nomPais= tk.StringVar()
+d = tk.getint()
+mPaises=[]
 def pRegistro():
     if nPaises.get()>=1:
        window4 = Toplevel(window)
@@ -54,9 +56,12 @@ def vRegistro():
        tk.Entry(window2, textvariable=aEntrada).place(x=100,y=180)
        
        opcion = tk.OptionMenu(window2 ,var,*opciones).place(x=100, y=210)
+      
        login = Button(window2, text="  Ingresar  ", background="red", command=bLogin).place(x=20, y=300)
        resultado = Button(window2, text="Resultado", background="red", command=vResultado).place(x=60, y=350)
        quit = Button(window2, text="     Salir     ", background="red", command=window2.destroy).place(x=100, y=300)
+       for i in range(nPaises.get()):
+           mPaises.append([0]*3)
        window2.mainloop() 
     else:
        messagebox.showinfo("Error","Ingresar más países")    
@@ -65,35 +70,29 @@ Button(window, text="Aceptar",bg="red", command=pRegistro, width=10).place(x=100
 Button(window, text="Salir",bg="red",command=window.destroy,width=10).place(x=100,y=250)
 nombreC = []
 oPais = var.get()
-n = nPaises.get()
+     
 def bLogin():
-    c=0
     nMayor=10
     nombre = nEntrada.get()+" "+aEntrada.get()
-    mPaises=[]
-    nombreC.append(nombre) 
-    for i in range(nPaises.get()):
-        mPaises.append([0]*3)   
-       
-    for i in range(nPaises.get()):  
-        a = r(0,2) 
-        for j in range(3):
-             bronce=0
-             plata=0
-             oro=0
-             if a==0:
-                bronce = r(1,3)
-                mPaises[i][a]+=bronce
-                break
-             elif a==1:
-                plata = r(1,3)
-                mPaises[i][a]+=plata
-                break
-             elif a==2: 
-                oro = r(1,3)
-                mPaises[i][a]+=oro  
-                break
-    print(mPaises)        
+    nombreC.append(nombre)  
+    a=r(0,2)   
+    bronce=0
+    plata=0
+    oro=0
+    if a==0:
+        bronce = r(1,3)
+        mPaises[0][a]+=bronce
+        
+    elif a==1:
+        plata = r(1,3)
+        mPaises[0][a]+=plata
+        
+    elif a==2: 
+        oro = r(1,3)
+        mPaises[0][a]+=oro  
+        
+    print(mPaises)     
+    print(d)   
     #if c==0:   
     #     for i in range(nPaises.get()):
     #       oPais = [0]*3
