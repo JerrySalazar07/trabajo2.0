@@ -79,15 +79,19 @@ def bLogin():
     bronce=0
     plata=0
     oro=0
+    #Con esto está sumando, la matriz se crea más arriba :S
     if a==0:
+        #el cero será cambiado por la opción que se elige en el registro, solo es una prueba
         bronce = r(1,3)
         mPaises[0][a]+=bronce
         
     elif a==1:
+        #el cero será cambiado por la opción que se elige en el registro, solo es una prueba
         plata = r(1,3)
         mPaises[0][a]+=plata
         
-    elif a==2: 
+    elif a==2:
+        #el cero será cambiado por la opción que se elige en el registro, solo es una prueba 
         oro = r(1,3)
         mPaises[0][a]+=oro  
         
