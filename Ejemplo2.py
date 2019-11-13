@@ -45,7 +45,7 @@ def vRegistro():
        c=c+1
     if c==nPaises.get():
        window2 = Toplevel()
-       window2.geometry("350x250")
+       window2.geometry("500x350")
        #imagen = PhotoImage(file="javelinfinal.pgm")
        #fondo = Label(window2, image=imagen).place(x=0, y=0)
        titulo = Label(window2, text="Datos del Deportista",font=("Arial",20,"bold")).place(x=20,y=100)
@@ -110,9 +110,7 @@ def vResultado():
     window3 = Toplevel()
     window3.geometry("500x350")
     suma=0
-    sumaP = []
-    c=0
-    a=0
+
     #for i in range(3):
     #    suma = suma + oPais[i]
     #    sumaP.append(suma)
