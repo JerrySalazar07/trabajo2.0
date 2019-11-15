@@ -69,32 +69,35 @@ def vRegistro():
 Button(window, text="Aceptar",bg="red", command=pRegistro, width=10).place(x=100,y=220)
 Button(window, text="Salir",bg="red",command=window.destroy,width=10).place(x=100,y=250)
 nombreC = []
-oPais = var.get()
+
      
 def bLogin():
     nMayor=10
     nombre = nEntrada.get()+" "+aEntrada.get()
     nombreC.append(nombre)  
-    a=r(0,2)   
-    bronce=0
-    plata=0
-    oro=0
+    pais = var.get()
+    for i in range(nPaises.get()):
+        if opciones[i]==pais:
+           a=r(0,2)   
+           bronce=0
+           plata=0
+           oro=0
     #Con esto está sumando, la matriz se crea más arriba :S
-    if a==0:
+           if a==0:
         #el cero será cambiado por la opción que se elige en el registro, solo es una prueba
-        bronce = r(1,3)
-        mPaises[0][a]+=bronce
-        
-    elif a==1:
+              bronce = r(1,3)
+              mPaises[i][a]+=bronce
+              break
+           elif a==1:
         #el cero será cambiado por la opción que se elige en el registro, solo es una prueba
-        plata = r(1,3)
-        mPaises[0][a]+=plata
-        
-    elif a==2:
+              plata = r(1,3)
+              mPaises[i][a]+=plata
+              break
+           elif a==2:
         #el cero será cambiado por la opción que se elige en el registro, solo es una prueba 
-        oro = r(1,3)
-        mPaises[0][a]+=oro  
-        
+              oro = r(1,3)
+              mPaises[i][a]+=oro  
+              break              
     print(mPaises)     
     print(d)   
     #if c==0:   
@@ -110,22 +113,12 @@ def vResultado():
     window3 = Toplevel()
     window3.geometry("500x350")
     suma=0
-
+    a=0
+    c=0
     #for i in range(3):
     #    suma = suma + oPais[i]
     #    sumaP.append(suma)
     #print(suma)    
-    """
-    for i in range(3):
-        sumaP = sumaP+Peru[i]
-    for i in range(3):
-        sumaB = sumaB+Brasil[i]
-    for i in range(3):
-        sumaC = sumaC +Chile[i]
-    for i in range(3):
-        sumaA = sumaA+Argentina[i]
-    for i in range(3):
-        sumaU = sumaU+ Uruguay[i]"""
     for i in range(len(opciones)):
         a=a+30
         Label(window3, text=opciones[i]).place(x=60,y=a)    
