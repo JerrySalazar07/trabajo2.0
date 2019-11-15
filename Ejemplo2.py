@@ -17,7 +17,7 @@ nomPais= tk.StringVar()
 d = tk.getint()
 mPaises=[]
 def pRegistro():
-    if nPaises.get()>=1:
+    if nPaises.get()>=10:
        window4 = Toplevel(window)
        window4.geometry("400x300")
        Label(window4, text="Registro").place(x=50,y=0)
@@ -31,10 +31,12 @@ var.set("Elegir País")
 opciones = []  
 
 def RegistrarPais():
-    if len(opciones)<=nPaises.get()-1:    
+    if nomPais.get()=="" :    
+      messagebox.showinfo("Error","Ingrese un país")
+    elif len(opciones)<=nPaises.get()-1:
       opcion=nomPais.get()
       opciones.append(opcion)   
-      print(opciones)
+      print(opciones)  
     else:  
       messagebox.showinfo("Error","No puede ingresar más países")  
       print(opciones)
