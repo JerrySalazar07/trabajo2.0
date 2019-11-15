@@ -113,12 +113,13 @@ def vResultado():
     window3 = Toplevel()
     window3.geometry("500x350")
     suma=0
+    sumaT=[]
     a=0
     c=0
-    #for i in range(3):
-    #    suma = suma + oPais[i]
-    #    sumaP.append(suma)
-    #print(suma)    
+    for i in range(nPaises.get()):
+        for j in range(3):
+            suma = suma + mPaises[i][j]
+        sumaT.append(suma)   
     for i in range(len(opciones)):
         a=a+30
         Label(window3, text=opciones[i]).place(x=60,y=a)    
