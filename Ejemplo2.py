@@ -76,7 +76,9 @@ def bLogin():
     nombre = nEntrada.get()+" "+aEntrada.get()
     nombreC.append(nombre)  
     pais = var.get()
-    for i in range(nPaises.get()):
+    if nEntrada.get() != "" or aEntrada.get() != "":
+      messagebox.showinfo("Registro con exito","Bienvenido "+nombre)
+      for i in range(nPaises.get()):
         if opciones[i]==pais:
            a=r(0,2)   
            bronce=0
@@ -98,31 +100,28 @@ def bLogin():
               oro = r(1,3)
               mPaises[i][a]+=oro  
               break              
-    print(mPaises)     
-    print(d)   
-    #if c==0:   
-    #     for i in range(nPaises.get()):
-    #       oPais = [0]*3
-    #       c=c+1
-    if nEntrada.get() != "" or aEntrada.get() != "":
-       messagebox.showinfo("Registro con exito","Bienvenido "+nombre)
-      
+         
+     #if c==0:   
+     #     for i in range(nPaises.get()):
+     #       oPais = [0]*3
+     #       c=c+1
     else:
         messagebox.showinfo("Error","Ingrese sus datos")  
+    print(mPaises)    
 def vResultado():
     window3 = Toplevel()
     window3.geometry("500x350")
     suma=0
     sumaT=[]
-    a=0
+     #a=0
     c=0
     for i in range(nPaises.get()):
         for j in range(3):
             suma = suma + mPaises[i][j]
         sumaT.append(suma)   
-    for i in range(len(opciones)):
-        a=a+30
-        Label(window3, text=opciones[i]).place(x=60,y=a)    
+     #for i in range(len(opciones)):
+     #   a=a+30
+     #   Label(window3, text=opciones[i]).place(x=60,y=a)    
     for i in range(nPaises.get()):
         c=c+30
         Label(window3, text=i+1).place(x=0, y=c)
