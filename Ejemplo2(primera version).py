@@ -110,8 +110,9 @@ def vResultado():
     window3 = Toplevel()
     window3.geometry("500x350")
     sumaT=[]
-     #a=0
+    a=0
     c=0
+    
     for i in range(nPaises.get()):
         suma=0
         for j in range(3):
@@ -126,15 +127,13 @@ def vResultado():
         Label(window3, text=i+1).place(x=0, y=c)
     print("Pais\t\tMedallas\t\tTotal")
     for i in range(len(mPaises)):
-        print(repr(opciones[i]).rjust(15),repr(mPaises[i]).rjust(15),repr(sumaT[i]).rjust(12))
-    for i in range(len(mPaises)):
         for j in range(len(mPaises)-1):
             if sumaT[j]>sumaT[j+1]:
-                #intercambiar la edad
-                itemEdad=sumaT[j]
+                
+                itemSum=sumaT[j]
                 sumaT[j]=sumaT[j+1]
-                sumaT[j+1]=itemEdad
-                #intercambiar el nombre
+                sumaT[j+1]=itemSum
+                
                 medallas=mPaises[j]
                 mPaises[j]=mPaises[j+1]
                 mPaises[j+1]=medallas
@@ -142,8 +141,11 @@ def vResultado():
                 opcion=opciones[j]
                 opciones[j]=opciones[j+1]
                 opciones[j+1]=opcion   
-    #iPeru = PhotoImage(file="peru1.pgm")
-    #Peru = Label(window3, image=iPeru, text="Perú").place(x=100,y=150)
+
+    opciones.reverse()
+    mPaises.reverse()
+    sumaT.reverse()            
+    
     Label(window3, text="Posición").place(x=0,y=0)
     Label(window3, text="País").place(x=80,y=0)
     Label(window3, text="   ",background="#CD7F32").place(x=180,y=0)
@@ -151,5 +153,14 @@ def vResultado():
     Label(window3, text="   ",background="gold").place(x=220,y=0)
     Label(window3,text="Total").place(x=300,y=0)
     Button(window3, text="Cerrar",background="red",command=window3.destroy).place(x=200,y=300)
+    for i in range(len(mPaises)):
+        f=160
+        a=a+30
+        Label(window3, text=opciones[i]).place(x=80,y=a)
+        Label(window3,text=sumaT[i]).place(x=300,y=a)
+        for j in range(3):
+            f=f+20
+            Label(window3, text=mPaises[i][j]).place(x=f,y=a)
     window3.mainloop()
+
 window.mainloop()
