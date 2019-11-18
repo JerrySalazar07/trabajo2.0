@@ -23,6 +23,7 @@ def pRegistro():
        Label(window4, text="Registro").place(x=50,y=0)
        
        Entry(window4,textvariable=nomPais, width=20).place(x=50,y=50)
+       
        Button(window4,text="Ingresar", command=RegistrarPais).place(x=70,y=70)
        Button(window4,text="Continuar", command=vRegistro).place(x=70,y=100)
     else:
@@ -30,13 +31,14 @@ def pRegistro():
 var.set("Elegir País")
 opciones = []  
 
-def RegistrarPais():
-    if nomPais.get()=="" :    
+def RegistrarPais():  
+    if nomPais.get()=="" :      
       messagebox.showinfo("Error","Ingrese un país")
     elif len(opciones)<=nPaises.get()-1:
       opcion=nomPais.get()
       opciones.append(opcion)   
       print(opciones)  
+      nomPais.set("")  
     else:  
       messagebox.showinfo("Error","No puede ingresar más países")  
       print(opciones)
@@ -56,7 +58,6 @@ def vRegistro():
        paises = Label(window2, text="Paises   ",font=("Arial",10),background="grey").place(x=20,y=210)
        tk.Entry(window2, textvariable=nEntrada).place(x=100,y=150)
        tk.Entry(window2, textvariable=aEntrada).place(x=100,y=180)
-       
        opcion = tk.OptionMenu(window2 ,var,*opciones).place(x=100, y=210)
       
        login = Button(window2, text="  Ingresar  ", background="red", command=bLogin).place(x=20, y=300)
@@ -80,33 +81,28 @@ def bLogin():
     pais = var.get()
     if nEntrada.get() != "" or aEntrada.get() != "":
       messagebox.showinfo("Registro con exito","Bienvenido "+nombre)
+      nEntrada.set("")
+      aEntrada.set("")
       for i in range(nPaises.get()):
         if opciones[i]==pais:
            a=r(0,2)   
-           bronce=0
-           plata=0
-           oro=0
-    #Con esto está sumando, la matriz se crea más arriba :S
+           bronce=1
+           plata=1
+           oro=1
+     #Con esto está sumando, la matriz se crea más arriba :S
            if a==0:
         #el cero será cambiado por la opción que se elige en el registro, solo es una prueba
-              bronce = r(1,3)
               mPaises[i][a]+=bronce
               break
            elif a==1:
         #el cero será cambiado por la opción que se elige en el registro, solo es una prueba
-              plata = r(1,3)
               mPaises[i][a]+=plata
               break
            elif a==2:
         #el cero será cambiado por la opción que se elige en el registro, solo es una prueba 
-              oro = r(1,3)
               mPaises[i][a]+=oro  
-              break              
-         
-     #if c==0:   
-     #     for i in range(nPaises.get()):
-     #       oPais = [0]*3
-     #       c=c+1
+              break   
+      var.set("Elegir País")                 
     else:
         messagebox.showinfo("Error","Ingrese sus datos")  
     print(mPaises)    
