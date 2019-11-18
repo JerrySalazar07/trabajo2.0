@@ -109,20 +109,39 @@ def bLogin():
 def vResultado():
     window3 = Toplevel()
     window3.geometry("500x350")
-    suma=0
     sumaT=[]
      #a=0
     c=0
     for i in range(nPaises.get()):
+        suma=0
         for j in range(3):
             suma = suma + mPaises[i][j]
         sumaT.append(suma)   
+    print(sumaT)    
      #for i in range(len(opciones)):
      #   a=a+30
-     #   Label(window3, text=opciones[i]).place(x=60,y=a)    
+     #   Label(window3, text=opciones[i]).place(x=60,y=a)   
     for i in range(nPaises.get()):
         c=c+30
         Label(window3, text=i+1).place(x=0, y=c)
+    print("Pais\t\tMedallas\t\tTotal")
+    for i in range(len(mPaises)):
+        print(repr(opciones[i]).rjust(15),repr(mPaises[i]).rjust(15),repr(sumaT[i]).rjust(12))
+    for i in range(len(mPaises)):
+        for j in range(len(mPaises)-1):
+            if sumaT[j]>sumaT[j+1]:
+                #intercambiar la edad
+                itemEdad=sumaT[j]
+                sumaT[j]=sumaT[j+1]
+                sumaT[j+1]=itemEdad
+                #intercambiar el nombre
+                medallas=mPaises[j]
+                mPaises[j]=mPaises[j+1]
+                mPaises[j+1]=medallas
+                 
+                opcion=opciones[j]
+                opciones[j]=opciones[j+1]
+                opciones[j+1]=opcion   
     #iPeru = PhotoImage(file="peru1.pgm")
     #Peru = Label(window3, image=iPeru, text="Perú").place(x=100,y=150)
     Label(window3, text="Posición").place(x=0,y=0)
