@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import *
 from random import randint as r
 from tkinter import ttk, messagebox
+#import matplotlib.pyplot  as plt
 window = Tk()
 window.geometry("300x350")
 aEntrada = tk.StringVar()
@@ -17,7 +18,7 @@ nomPais= tk.StringVar()
 d = tk.getint()
 mPaises=[]
 def pRegistro():
-    if nPaises.get()>=10:
+    if nPaises.get()>=5:
        window4 = Toplevel(window)
        window4.geometry("400x300")
        Label(window4, text="Registro").place(x=50,y=0)
@@ -75,7 +76,6 @@ nombreC = []
 
      
 def bLogin():
-    nMayor=10
     nombre = nEntrada.get()+" "+aEntrada.get()
     nombreC.append(nombre)  
     pais = var.get()
@@ -162,5 +162,7 @@ def vResultado():
             f=f+20
             Label(window3, text=mPaises[i][j]).place(x=f,y=a)
     window3.mainloop()
-
+  #def vOro():
+  #def vGraf():
+    
 window.mainloop()
