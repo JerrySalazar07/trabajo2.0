@@ -50,7 +50,7 @@ def vRegistro():
        c=c+1
     if c==nPaises.get():
        window2 = Toplevel()
-       window2.geometry("500x350")
+       window2.geometry("320x450")
        #imagen = PhotoImage(file="javelinfinal.pgm")
        #fondo = Label(window2, image=imagen).place(x=0, y=0)
        titulo = Label(window2, text="Datos del Deportista",font=("Arial",20,"bold")).place(x=20,y=100)
@@ -108,7 +108,7 @@ def bLogin():
     print(mPaises)    
 def vResultado():
     window3 = Toplevel()
-    window3.geometry("500x350")
+    window3.geometry("500x400")
     sumaT=[]
     a=0
     c=0
@@ -152,7 +152,7 @@ def vResultado():
     Label(window3, text="   ",background="silver").place(x=200,y=0)
     Label(window3, text="   ",background="gold").place(x=220,y=0)
     Label(window3,text="Total").place(x=300,y=0)
-    Button(window3, text="Cerrar",background="red",command=window3.destroy).place(x=200,y=300)
+    Button(window3, text="Cerrar",background="red",command=window3.destroy).place(x=200,y=350)
     for i in range(len(mPaises)):
         f=160
         a=a+30
