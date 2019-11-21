@@ -2,8 +2,7 @@ import tkinter as tk
 from tkinter import *
 from random import randint as r
 from tkinter import ttk, messagebox
-import matplotlib.pyplot as plt
-import numpy as np
+from matplotlib.pylab import hist, show
 
 window = Tk()
 window.geometry("300x350")
@@ -26,7 +25,6 @@ Pais = Entry(window,textvariable=nPaises).place(x=80, y=240)
 nomPais= tk.StringVar()
 d = tk.getint()
 mPaises=[]
-
 def pRegistro():
     if nPaises.get()>=5:
        window4 = Toplevel(window)
@@ -177,17 +175,4 @@ def vResultado():
   #def vOro():
   #def vGraf():
     
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
-
-    paises = opciones
-    datos = sumaT
-    xx = range(1,len(datos)+1)
-
-    ax.bar(xx, datos)
-    ax.set_xticks(xx)
-    ax.set_xticklabels(paises)
-    ax.set_ylabel("N° de Medallas")
-
-    plt.show()
 window.mainloop()
