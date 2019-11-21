@@ -127,6 +127,26 @@ def vResultado():
     for i in range(nPaises.get()):
         c=c+30
         Label(window3, text=i+1).place(x=0, y=c)
+        print("Pais\t\tMedallas\t\tTotal")
+    for i in range(len(mPaises)):
+        for j in range(len(mPaises)-1):
+            if sumaT[j]>sumaT[j+1]:
+                
+                itemSum=sumaT[j]
+                sumaT[j]=sumaT[j+1]
+                sumaT[j+1]=itemSum
+                
+                medallas=mPaises[j]
+                mPaises[j]=mPaises[j+1]
+                mPaises[j+1]=medallas
+                 
+                opcion=opciones[j]
+                opciones[j]=opciones[j+1]
+                opciones[j+1]=opcion   
+
+    opciones.reverse()
+    mPaises.reverse()
+    sumaT.reverse()      
     #iPeru = PhotoImage(file="peru1.pgm")
     #Peru = Label(window3, image=iPeru, text="Perú").place(x=100,y=150)
     Label(window3, text="Posición").place(x=0,y=0)
