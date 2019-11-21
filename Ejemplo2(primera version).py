@@ -145,7 +145,7 @@ def vResultado():
     opciones.reverse()
     mPaises.reverse()
     sumaT.reverse()            
-    
+    #asd
     Label(window3, text="Posición").place(x=0,y=0)
     Label(window3, text="País").place(x=80,y=0)
     Label(window3, text="   ",background="#CD7F32").place(x=180,y=0)
