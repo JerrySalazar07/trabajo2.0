@@ -1,14 +1,18 @@
+__author__="Jean Borja, Alexia Menendez, Jerry Salazar"
+__version__="v1.0"
+__credits__="BMS-C-2019"
+__license__="C"
+__maintainer__="BMS"
+__status__="estudiante"
 import tkinter as tk
 from tkinter import *
 from random import randint as r
 from tkinter import ttk, messagebox
 import matplotlib.pyplot as plt
 import numpy as np
-
 window = Tk()
 window.geometry("300x350")
 window.config(bg="#181446")
-
 aEntrada = tk.StringVar()
 nEntrada = tk.StringVar()
 var = tk.StringVar()
@@ -23,10 +27,12 @@ d = tk.getint()
 mPaises=[]
 
 def pRegistro():
-    if nPaises.get()>=5:
+    if nPaises.get()>=10:
        window4 = Toplevel(window)
        window4.geometry("400x300")
        window4.config(bg="#181446")
+       ipais=PhotoImage(file="paises1.png")
+       Label(window4,image=ipais).place(x=20,y=0)
        Label(window4, text="Registrar países",font=("Comic Sans MS",20,"bold"),bg="#181446",fg="white").place(x=50,y=0)
        
        Entry(window4,textvariable=nomPais, width=20).place(x=50,y=60)
@@ -51,26 +57,23 @@ def RegistrarPais():
       print(opciones)
        
 def vRegistro():
-    c=0
-    for i in opciones:
-       c=c+1
-    if c==nPaises.get():
+    if len(opciones)==nPaises.get():
        window2 = Toplevel()
        window2.geometry("500x350")
        window2.config(bg="#181446")
        #imagen = PhotoImage(file="javelinfinal.pgm")
        #fondo = Label(window2, image=imagen).place(x=0, y=0)
-       titulo = Label(window2, text="Datos del Deportista",font=("Comic Sans MS",20,"bold"),bg="#181446",fg="white").place(x=20,y=100)
-       nombre = Label(window2, text="Nombres",font=("Comic Sans MS",10,"bold"),bg="#181446",fg="white").place(x=20,y=150)
-       apellidos = Label(window2, text="Apellidos",font=("Comic Sans MS",10,"bold"),bg="#181446",fg="white").place(x=20, y=180)
-       paises = Label(window2, text="Paises   ",font=("Comic Sans MS",10,"bold"),bg="#181446",fg="white").place(x=20,y=210)
+       Label(window2, text="Datos del Deportista",font=("Comic Sans MS",20,"bold"),bg="#181446",fg="white").place(x=20,y=100)
+       Label(window2, text="Nombres",font=("Comic Sans MS",10,"bold"),bg="#181446",fg="white").place(x=20,y=150)
+       Label(window2, text="Apellidos",font=("Comic Sans MS",10,"bold"),bg="#181446",fg="white").place(x=20, y=180)
+       Label(window2, text="Paises   ",font=("Comic Sans MS",10,"bold"),bg="#181446",fg="white").place(x=20,y=210)
        tk.Entry(window2, textvariable=nEntrada).place(x=100,y=150)
        tk.Entry(window2, textvariable=aEntrada).place(x=100,y=180)
        opcion = tk.OptionMenu(window2 ,var,*opciones).place(x=100, y=210)
       
-       login = Button(window2, text="  Ingresar  ", background="red", command=bLogin).place(x=20, y=300)
-       resultado = Button(window2, text="Resultado", background="red", command=vResultado).place(x=90, y=300)
-       quit = Button(window2, text="     Salir     ", background="red", command=window2.destroy).place(x=160, y=300)
+       Button(window2, text="  Ingresar  ", background="red", command=bLogin).place(x=20, y=300)
+       Button(window2, text="Resultado", background="red", command=vResultado).place(x=90, y=300)
+       Button(window2, text="     Salir     ", background="red", command=window2.destroy).place(x=160, y=300)
        for i in range(nPaises.get()):
            mPaises.append([0]*3)
        window2.mainloop() 
