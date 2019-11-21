@@ -26,6 +26,7 @@ Pais = Entry(window,textvariable=nPaises).place(x=80, y=240)
 nomPais= tk.StringVar()
 d = tk.getint()
 mPaises=[]
+
 def pRegistro():
     if nPaises.get()>=5:
        window4 = Toplevel(window)
@@ -175,23 +176,18 @@ def vResultado():
     window3.mainloop()
   #def vOro():
   #def vGraf():
+    
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
 
+    paises = opciones
+    datos = sumaT
+    xx = range(1,len(datos)+1)
 
-    np.random.seed(19680801)
-    plt.rcdefaults()
-    fig, ax = plt.subplots()
+    ax.bar(xx, datos)
+    ax.set_xticks(xx)
+    ax.set_xticklabels(paises)
+    ax.set_ylabel("N° de Medallas")
 
-    # Example data
-    people = nomPais
-    y_pos = np.arange(len(people))
-    performance = 3 + 10 * np.random.rand(len(people))
-    error = np.random.rand(len(people))
-
-    ax.barh(y_pos, performance, xerr=error, align='center')
-    ax.set_yticks(y_pos)
-    ax.set_yticklabels(people)
-    ax.invert_yaxis()  # labels read top-to-bottom
-    ax.set_xlabel('N° de Medallas')
-    ax.set_title('¿Quien tuvo mas medallas?')
-    plt.show()   
+    plt.show()
 window.mainloop()
