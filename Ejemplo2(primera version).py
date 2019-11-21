@@ -20,13 +20,13 @@ d = tk.getint()
 mPaises=[]
 def pRegistro():
     if nPaises.get()>=1:
-       window4 = Toplevel(window)
-       window4.geometry("400x300")
+       window4 = Toplevel(window)       
+       window4.geometry("300x250")
        Label(window4, text="Registro").place(x=50,y=0)
-       
        Entry(window4,textvariable=nomPais, width=20).place(x=50,y=50)
-       Button(window4,text="Ingresar", command=RegistrarPais).place(x=70,y=70)
-       Button(window4,text="Continuar", command=vRegistro).place(x=70,y=100)
+       Button(window4,text="Ingresar",width=10, command=RegistrarPais,bg="red").place(x=70,y=80)
+       Button(window4,text="Continuar",width=10, command=vRegistro,bg="red").place(x=70,y=110)
+       
     else:
         messagebox.showinfo("Error","El número de participante debe ser mayor o igual a 10")
 var.set("Elegir País")
@@ -37,8 +37,9 @@ def RegistrarPais():
       messagebox.showinfo("Error","Ingrese un país")
     elif len(opciones)<=nPaises.get()-1:
       opcion=nomPais.get()
-      opciones.append(opcion)   
+      opciones.append(opcion) 
       print(opciones)  
+      nomPais.set("")
     else:  
       messagebox.showinfo("Error","No puede ingresar más países")  
       print(opciones)
@@ -68,6 +69,7 @@ def vRegistro():
        for i in range(nPaises.get()):
            mPaises.append([0]*3)
        window2.mainloop() 
+       var.set("Elegir país")
     else:
        messagebox.showinfo("Error","Ingresar más países")    
     
@@ -77,56 +79,44 @@ nombreC = []
 
      
 def bLogin():
-    nMayor=10
     nombre = nEntrada.get()+" "+aEntrada.get()
     nombreC.append(nombre)  
     pais = var.get()
-    if nEntrada.get() != "" or aEntrada.get() != "":
+    if nEntrada.get() != "" or aEntrada.get() != ""  :
       messagebox.showinfo("Registro con exito","Bienvenido "+nombre)
       for i in range(nPaises.get()):
         if opciones[i]==pais:
            a=r(0,2)   
-           bronce=0
-           plata=0
-           oro=0
-    #Con esto está sumando, la matriz se crea más arriba :SG
+           bronce=1
+           plata=1
+           oro=1
            if a==0:
-        #el cero será cambiado por la opción que se elige en el registro, solo es una prueba
-              bronce = r(1,3)
               mPaises[i][a]+=bronce
               break
            elif a==1:
-        #el cero será cambiado por la opción que se elige en el registro, solo es una prueba
-              plata = r(1,3)
               mPaises[i][a]+=plata
               break
            elif a==2:
-        #el cero será cambiado por la opción que se elige en el registro, solo es una prueba 
-              oro = r(1,3)
               mPaises[i][a]+=oro  
-              break              
-         
-     #if c==0:   
-     #     for i in range(nPaises.get()):
-     #       oPais = [0]*3
-     #       c=c+1
+              break                              
     else:
-        messagebox.showinfo("Error","Ingrese sus datos")  
+        messagebox.showinfo("Error","Ingrese sus datos")
+
+    nEntrada.set("")
+    aEntrada.set("")
+    var.set("Elegir país")
     print(mPaises)    
 def vResultado():
     window3 = Toplevel()
     window3.geometry("500x350")
-    suma=0
     sumaT=[]
     a=0
     c=0
     for i in range(nPaises.get()):
+        suma=0
         for j in range(3):
             suma = suma + mPaises[i][j]
-        sumaT.append(suma)   
-     #for i in range(len(opciones)):
-     #   a=a+30
-     #   Label(window3, text=opciones[i]).place(x=60,y=a)    
+        sumaT.append(suma)     
     for i in range(nPaises.get()):
         c=c+30
         Label(window3, text=i+1).place(x=0, y=c)
@@ -167,5 +157,19 @@ def vResultado():
         for j in range(3):
             f=f+20
             Label(window3, text=mPaises[i][j]).place(x=f,y=a)
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+
+    paises = opciones
+    datos = sumaT
+    xx = range(1,len(datos)+1)
+
+    ax.bar(xx, datos)
+    ax.set_xticks(xx)
+    ax.set_xticklabels(paises)
+    ax.set_ylabel("N° de Medallas")
+
+    plt.show()        
     window3.mainloop()
 window.mainloop()
