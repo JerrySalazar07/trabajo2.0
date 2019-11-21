@@ -89,7 +89,7 @@ def bLogin():
            bronce=0
            plata=0
            oro=0
-    #Con esto está sumando, la matriz se crea más arriba :S
+    #Con esto está sumando, la matriz se crea más arriba :SG
            if a==0:
         #el cero será cambiado por la opción que se elige en el registro, solo es una prueba
               bronce = r(1,3)
