@@ -2,22 +2,18 @@ import tkinter as tk
 from tkinter import *
 from random import randint as r
 from tkinter import ttk, messagebox
-from matplotlib.pylab import hist, show
+import matplotlib.pyplot as plt
+import numpy as np
 
 window = Tk()
 window.geometry("300x350")
 window.config(bg="#181446")
-miFrame = Frame()
-miFrame.pack()
-miFrame.config(bg="red")
-miFrame.config(width="150",height="150")
-miFrame.config(bd="30")
-miFrame.config(relief="sunken")
+
 aEntrada = tk.StringVar()
 nEntrada = tk.StringVar()
 var = tk.StringVar()
-#imagen = PhotoImage(file="pana.pgm")
-#fondo = Label(window, image=imagen).place(x=20,y=0)
+imagen = PhotoImage(file="lima2019.png")
+fondo = Label(window, image=imagen).place(x=20,y=0)
 titulo = Label(window, text="Países participantes", width=15,font=("Comic Sans MS",20,"bold"),bg="#181446",fg="white").place(x=25,y=170)
 Pas = Label(window, text="Ingrese cantidad de Países participantes: ",font=("Comic Sans MS",10, "bold"),bg="#181446",fg="white").place(x=20, y=210)
 nPaises = IntVar()
@@ -25,6 +21,7 @@ Pais = Entry(window,textvariable=nPaises).place(x=80, y=240)
 nomPais= tk.StringVar()
 d = tk.getint()
 mPaises=[]
+
 def pRegistro():
     if nPaises.get()>=5:
        window4 = Toplevel(window)
@@ -175,4 +172,17 @@ def vResultado():
   #def vOro():
   #def vGraf():
     
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+
+    paises = opciones
+    datos = sumaT
+    xx = range(1,len(datos)+1)
+
+    ax.bar(xx, datos)
+    ax.set_xticks(xx)
+    ax.set_xticklabels(paises)
+    ax.set_ylabel("N° de Medallas")
+
+    plt.show()
 window.mainloop()
