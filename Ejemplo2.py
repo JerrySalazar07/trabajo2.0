@@ -17,7 +17,7 @@ aEntrada = tk.StringVar()
 nEntrada = tk.StringVar()
 var = tk.StringVar()
 imagen = PhotoImage(file="lima2019.png")
-fondo = Label(window, image=imagen).place(x=20,y=0)
+fondo = Label(window, image=imagen).place(x=5,y=20)
 titulo = Label(window, text="Países participantes", width=15,font=("Comic Sans MS",20,"bold"),bg="#181446",fg="white").place(x=25,y=170)
 Pas = Label(window, text="Ingrese cantidad de Países participantes: ",font=("Comic Sans MS",10, "bold"),bg="#181446",fg="white").place(x=20, y=210)
 nPaises = IntVar()
@@ -31,16 +31,16 @@ def pRegistro():
        window4 = Toplevel(window)
        window4.geometry("400x300")
        window4.config(bg="#181446")
-       ipais=PhotoImage(file="paises1.png")
-       Label(window4,image=ipais).place(x=20,y=0)
-       Label(window4, text="Registrar países",font=("Comic Sans MS",20,"bold"),bg="#181446",fg="white").place(x=50,y=0)
+       #ipais=PhotoImage(file="paises1.png")
+       #Label(window4,image=ipais).place(x=0,y=0)
+       Label(window4, text="Registrar países",font=("Comic Sans MS",15,"bold"),bg="#181446",fg="white").place(x=220,y=0)
        
-       Entry(window4,textvariable=nomPais, width=20).place(x=50,y=60)
+       Entry(window4,textvariable=nomPais, width=20).place(x=220,y=60)
        
-       Button(window4,text="Ingresar", command=RegistrarPais).place(x=70,y=90)
-       Button(window4,text="Continuar", command=vRegistro).place(x=70,y=130)
+       Button(window4,text="Ingresar", command=RegistrarPais).place(x=220,y=90)
+       Button(window4,text="Continuar", command=vRegistro).place(x=220,y=130)
     else:
-        messagebox.showinfo("Error","El número de participante debe ser mayor o igual a 5")
+        messagebox.showinfo("Error","El número de participante debe ser mayor o igual a 10")
 var.set("Elegir País")
 opciones = []  
 
@@ -99,17 +99,13 @@ def bLogin():
            bronce=1
            plata=1
            oro=1
-     #Con esto está sumando, la matriz se crea más arriba :S
            if a==0:
-        #el cero será cambiado por la opción que se elige en el registro, solo es una prueba
               mPaises[i][a]+=bronce
               break
            elif a==1:
-        #el cero será cambiado por la opción que se elige en el registro, solo es una prueba
               mPaises[i][a]+=plata
               break
            elif a==2:
-        #el cero será cambiado por la opción que se elige en el registro, solo es una prueba 
               mPaises[i][a]+=oro  
               break   
       var.set("Elegir País")                 
@@ -129,9 +125,6 @@ def vResultado():
             suma = suma + mPaises[i][j]
         sumaT.append(suma)   
     print(sumaT)    
-     #for i in range(len(opciones)):
-     #   a=a+30
-     #   Label(window3, text=opciones[i]).place(x=60,y=a)   
     for i in range(nPaises.get()):
         c=c+30
         Label(window3, text=i+1).place(x=0, y=c)
@@ -171,9 +164,7 @@ def vResultado():
         for j in range(3):
             f=f+20
             Label(window3, text=mPaises[i][j]).place(x=f,y=a)
-    window3.mainloop()
-  #def vOro():
-  #def vGraf():
+    window3.mainloop()        
     
     fig = plt.figure()
     ax = fig.add_subplot(111)
@@ -188,4 +179,5 @@ def vResultado():
     ax.set_ylabel("N° de Medallas")
 
     plt.show()
+   
 window.mainloop()
